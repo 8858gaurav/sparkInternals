@@ -55,9 +55,9 @@ if __name__ == '__main__':
                                                                                                                 
     # Now save this file locally on your system, run this commands
     # 
-    # spark-submit --master yarn \
+    # spark3-submit --master yarn \
     # --num-executors 2 \
     # --executor-cores 1 \
     # --executor-memory 1g \
-    # --conf spark.dynamic.Allocation.enabled = false \
+    # --conf "spark.dynamic.Allocation.enabled=false" \
     # scripts3.py                                                                                                           
