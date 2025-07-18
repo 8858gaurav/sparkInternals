@@ -49,9 +49,9 @@ if __name__ == '__main__':
     # how many containers you have for your running spark applications, check this from the executor tab with the help of spark UI after runnng the above code.
 
     # Executor ID	       Address	                          Status	            RDD Blocks	diskUsed     Storage Memory            cores
-    # driver	        g01.itversity.com:44177	              Active	              0	          0B       107.5 KiB / 397.5 MiB        0
-    # 1	            w02.itversity.com:45925	                  Active	              0	          0B       77.7 KiB / 366.3 MiB          2
-    # 2	            w03.itversity.com:45635	                  Active	              0	          0B       37.5 KiB / 366.3 MiB	          2
+    # driver	        g01.itversity.com:44177	              Active	              0	          0B       107.5 KiB / 397.5 MiB         0
+    # 1	            w02.itversity.com:45925	                  Active	              0	          0B       77.7 KiB / 366.3 MiB          1
+    # 2	            w03.itversity.com:45635	                  Active	              0	          0B       37.5 KiB / 366.3 MiB	         1
                                                                                                                 
     # Now save this file locally on your system, run this commands
     # 
@@ -59,5 +59,5 @@ if __name__ == '__main__':
     # --num-executors 2 \
     # --executor-cores 1 \
     # --executor-memory 1g \
-    # --conf "spark.dynamic.Allocation.enabled=false" \
+    # --conf spark.dynamic.Allocation.enabled=false \
     # scripts3.py                                                                                                           
