@@ -36,8 +36,11 @@ if __name__ == '__main__':
     # the file size of lung cancer is 61 MB in hdfs.
     spark.sparkContext.defaultParallelism # default parallelism
 
-    maxPartitionBytes = 134217728/1024/1024 # for MB
-    file_size = os.path.getsize('/home/itv020752/Data/Lung_Cancer.csv')/1024/1024 # for MB, it's 128
+    spark.conf.get("spark.sql.files.maxPartitionBytes") # '134217728b'
+    spark.conf.get("spark.sql.shuffle.partitions") # 200
+
+    maxPartitionBytes = 134217728/1024/1024 # for MB, it's 128
+    file_size = os.path.getsize('/home/itv020752/Data/Lung_Cancer.csv')/1024/1024 # for MB
     default_parallelism = spark.sparkContext.defaultParallelism
 
     b = file_size/default_parallelism
