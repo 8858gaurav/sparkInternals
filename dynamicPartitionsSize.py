@@ -112,3 +112,5 @@ if __name__ == '__main__':
 
     print(df.count())
     # 4 cores we have, now each core will process to count the no of rows parallely.
+
+    # With this way we can utilize our cluster effectevily without wasting our resources, if we have a more cpu, then we'll get more no of partitions.
