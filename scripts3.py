@@ -29,12 +29,12 @@ if __name__ == '__main__':
     spark.sql("select count(*) from df_view").show()
     # in the executor tab, we'll be able to see 1 cores for each executors for this job. No of executor = 2
 
-    # how many containers you have for your running spark applications, check this from the executor tab with the help of spark UI after runnng the above code.
+    # how many containers you have for your running spark applications, check this from the executor tab with the help of spark UI before completing the above code.
 
-    # Executor ID	       Address	                          Status	            RDD Blocks	         Storage Memory
-    # driver	        g01.itversity.com:44177	              Active	              0	                 0.0 B / 397.5 MiB
-    # 1	            w02.itversity.com:45925	                  Active	              0	                 0.0 B / 366.3 MiB
-    # 2	            w03.itversity.com:45635	                  Active	              0	                 0.0 B / 366.3 MiB
+    # Executor ID	       Address	                     Status	            RDD Blocks	            Storage Memory
+    # driver	        g01.itversity.com:44177	             Active	              0	                 0.0 B / 397.5 MiB
+    # 1	        w02.itversity.com:45925	             Active	              0	                 0.0 B / 366.3 MiB
+    # 2	        w03.itversity.com:45635	             Active	              0	                 0.0 B / 366.3 MiB
 
 
     # check this from the enviroment tab with the help of spark UI

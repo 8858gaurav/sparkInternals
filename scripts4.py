@@ -27,6 +27,13 @@ if __name__ == '__main__':
     df = spark.read.format("csv").load("/user/itv020752/data/question_tags.csv", header = True)
     spark.sql("select count(*) from df_view").show()
     # in the executor tab, we'll be able to see 4 cores for each executors for this job. No of executor = 3
+    # before completing the code.
+
+    # Executor ID	       Address	                     Status	            RDD Blocks	diskUsed     Storage Memory            cores
+    # driver	        g01.itversity.com:44177	              Active	              0	          0B       107.5 KiB / 397.5 MiB         0
+    # 1	        w02.itversity.com:45925	              Active	              0	          0B       0B / 366.3 MiB                4
+    # 2	        w03.itversity.com:45635	              Active	              0	          0B       0B / 366.3 MiB	              4
+    # 3              w01.itversity.com:45635                   Active               0                0B       0B / 366.3 MiB                4
 
 
     # check this from the enviroment tab with the help of spark UI
