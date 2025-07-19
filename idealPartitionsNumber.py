@@ -125,8 +125,11 @@ if __name__ == '__main__':
     maxPartitionBytes = int(spark.conf.get("spark.sql.files.maxPartitionBytes")[0:-1])/1024/1024 # for MB, it's 128
     file_size = os.path.getsize('/home/itv020752/Data/question_tags.csv')/1024/1024 # for MB.
     default_parallelism = spark.sparkContext.defaultParallelism
-
-    b = file_size/default_parallelism # 456.5 mb
+    
+    print(file_size, "the size of file locally")
+    # 503.0 MB the size of file locally
+    
+    b = file_size/default_parallelism # 251.5 mb
     a = maxPartitionBytes # 128 mb
 
     def minimum(x, y): 
@@ -136,14 +139,14 @@ if __name__ == '__main__':
             return y 
     partition_size = minimum(a, b)
 
-    print(a, b) # 456.5, 128 mb
+    print(a, b) # 128.0 251.5
 
     print("number of partitions", file_size/partition_size)
-    # number of partitions 8
+    # number of partitions 4
 
     # no of partitions = Max(file_size/partition_size, default level of parallelism)
 
-    print(file_size/partition_size) # 8
+    print(file_size/partition_size) # 4
 
     def maximum(x, y): 
         if x > y:
@@ -154,15 +157,15 @@ if __name__ == '__main__':
 
 
     print("No of partitions ideally", maximum(file_size/partition_size,default_parallelism))
-    # No of partitions ideally 8
+    # No of partitions ideally 4
 
     df = spark.read.format("csv").load("/user/itv020752/data/question_tags.csv", header = True)
 
     df.rdd.getNumPartitions() # this is equal to the below one : 8
     print("number of partitions", file_size/partition_size, maximum(file_size/partition_size,default_parallelism))
-    # number of partitions 8 8
+    # number of partitions 4 4
 
     print(df.count())
     # 2 cores we have, now each core will process 1 task at a time to count the no of rows parallely.
-    # since we have 8 partitons, so each core will 4 task. means 2 task will run parallely at a time.
+    # since we have 4 partitons, so each core will handle 2 task. means 2 task will run parallely at a time, due to default paralelism.
     # With this way we can utilize our cluster effectevily without wasting our resources, if we have a more cpu, then we'll get more no of partitions.
