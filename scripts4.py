@@ -31,8 +31,8 @@ if __name__ == '__main__':
 
     # check this from the enviroment tab with the help of spark UI
     # Executor Reqs:
-    #       cores: [amount: 1]
-    #       memory: [amount: 1024]
+    #       cores: [amount: 4]
+    #       memory: [amount: 2048]
     #       offHeap: [amount: 0]
     # Task Reqs:
     #       cpus: [amount: 1.0]
@@ -40,11 +40,11 @@ if __name__ == '__main__':
 
     # how many containers you have for your running spark applications, check this from the executor tab with the help of spark UI after runnng the above code.
 
-    # Executor ID	       Address	                          Status	            RDD Blocks	diskUsed     Storage Memory            cores
+    # Executor ID	       Address	                     Status	            RDD Blocks	diskUsed     Storage Memory            cores
     # driver	        g01.itversity.com:44177	              Active	              0	          0B       107.5 KiB / 397.5 MiB         0
-    # 1	            w02.itversity.com:45925	                  Active	              0	          0B       77.7 KiB / 366.3 MiB          4
-    # 2	            w03.itversity.com:45635	                  Active	              0	          0B       37.5 KiB / 366.3 MiB	         4
-    # 3             w01.itversity.com:45635                   Active                  0           0B       37.5 KiB / 366.3 MiB          4
+    # 1	        w02.itversity.com:45925	              Active	              0	          0B       77.7 KiB / 366.3 MiB          4
+    # 2	        w03.itversity.com:45635	              Active	              0	          0B       37.5 KiB / 366.3 MiB	       4
+    # 3              w01.itversity.com:45635                   Active               0                0B       37.5 KiB / 366.3 MiB          4
                                                                                                                 
     # Now save this file locally on your system, run this commands
     # driver runs in one of the executor with in the cluster. we can't see the output, since our driver is running in the cluster mode.
@@ -52,9 +52,9 @@ if __name__ == '__main__':
 
     # spark3-submit \
     # --master yarn \
-    #--deploy-mode cluster \ 
+    #--deploy-mode client \  # for cluster mode, pass cluster here.
     # --num-executors 3 \
     # --executor-cores 4 \
     # --executor-memory 2g \ 
-    # --conf "spark.dynamicAllocation.enabled=false" \
-    # scripts4.py                                                                                                           
+    # --conf spark.dynamicAllocation.enabled=false \
+    # scripts4.py                                                                                                            

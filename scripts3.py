@@ -59,5 +59,5 @@ if __name__ == '__main__':
     # --num-executors 2 \
     # --executor-cores 1 \
     # --executor-memory 1g \
-    # --conf spark.dynamic.Allocation.enabled=false \
-    # scripts3.py                                                                                                           
+    # --conf spark.dynamicAllocation.enabled=false \
+    # scripts3.py                                                                                                            
