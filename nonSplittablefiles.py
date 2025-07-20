@@ -108,4 +108,6 @@ if __name__ == '__main__':
     # +--------+-----------------+
 
     df_gz_after_splitting.count() # 30438393
+
+    df_gz_after_splitting.rdd.getNumPartitions() # 4
         
