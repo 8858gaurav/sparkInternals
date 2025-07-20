@@ -72,13 +72,13 @@ if __name__ == '__main__':
     
     new_df_gz.repartition(4).write.format('csv').mode("overwrite").save("df_gz_after_splitting")
 
-    # !hadoop fs -ls df_gz_after_splitting
+    # !hadoop fs -ls -h df_gz_after_splitting
     # Found 5 items
     # -rw-r--r--   3 itv020752 supergroup          0 2025-07-20 03:46 df_gz_after_splitting/_SUCCESS
-    # -rw-r--r--   3 itv020752 supergroup  131877577 2025-07-20 03:44 df_gz_after_splitting/part-00000-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
-    # -rw-r--r--   3 itv020752 supergroup  131866406 2025-07-20 03:46 df_gz_after_splitting/part-00001-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
-    # -rw-r--r--   3 itv020752 supergroup  131838827 2025-07-20 03:45 df_gz_after_splitting/part-00002-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
-    # -rw-r--r--   3 itv020752 supergroup  131850915 2025-07-20 03:46 df_gz_after_splitting/part-00003-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
+    # -rw-r--r--   3 itv020752 supergroup    125.8 M 2025-07-20 03:44 df_gz_after_splitting/part-00000-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
+    # -rw-r--r--   3 itv020752 supergroup    125.8 M 2025-07-20 03:46 df_gz_after_splitting/part-00001-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
+    # -rw-r--r--   3 itv020752 supergroup    125.7 M 2025-07-20 03:45 df_gz_after_splitting/part-00002-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
+    # -rw-r--r--   3 itv020752 supergroup    125.7 M 2025-07-20 03:46 df_gz_after_splitting/part-00003-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
 
     df_gz_after_splitting = spark.read.format("csv").load("df_gz_after_splitting")
     df_gz_after_splitting.show()
