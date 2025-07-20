@@ -1,6 +1,7 @@
 # for non-splittable files, when we read the gzip, and snappy files, it this files were written in a csv format. 
 # even though our default min partitions = 2, even though our default parallelism = 2
 # we can't get the benefits of parallelism, if we split this files (gzip, snappy), then our files will become corrupt.
+# zip, and snappy are compression techniques.
 
 import pyspark, pandas as pd
 from pyspark.sql.functions import *
