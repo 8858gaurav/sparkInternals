@@ -110,4 +110,7 @@ if __name__ == '__main__':
     df_gz_after_splitting.count() # 30438393
 
     df_gz_after_splitting.rdd.getNumPartitions() # 4
+
+    # before spliiting (new_df_gz), the file size was 139.5, & after splitting (from 1 partitions to 4 partitions) the file size
+    # will become (125.8 + 125.8 + 125.7 + 125.7) MB
         
