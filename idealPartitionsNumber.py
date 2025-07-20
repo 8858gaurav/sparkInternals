@@ -118,8 +118,8 @@ if __name__ == '__main__':
     # whenerver shuffle happends by default 200 partition will get created.
     # formula for partition size
     # partition_size = min of (maxPartitionBytes, file_size/default parallelism)
-    # the file size of question tag is 913 MB in locally.
-    # the file size of question tag is  MB in hdfs.
+    # the file size of question tag is 503 MB in locally.
+    # the file size of question tag is 503 MB in hdfs.
     spark.sparkContext.defaultParallelism # default parallelism
 
     maxPartitionBytes = int(spark.conf.get("spark.sql.files.maxPartitionBytes")[0:-1])/1024/1024 # for MB, it's 128
@@ -161,7 +161,7 @@ if __name__ == '__main__':
 
     df = spark.read.format("csv").load("/user/itv020752/data/question_tags.csv", header = True)
 
-    df.rdd.getNumPartitions() # this is equal to the below one : 8
+    df.rdd.getNumPartitions() # this is equal to the below one : 4
     print("number of partitions", file_size/partition_size, maximum(file_size/partition_size,default_parallelism))
     # number of partitions 4 4
 
