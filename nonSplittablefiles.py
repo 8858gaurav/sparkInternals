@@ -69,6 +69,8 @@ if __name__ == '__main__':
     new_df_gz = spark.read.format("csv").load("new_df_gz")
     new_df_gz.rdd.getNumPartitions() # 1, why 1, because our file is not splittable, if we split this file, we'll get an error.
     # even though this data is > 128 MB.
+
+    new_df_gz.count() # 30438393
     
     new_df_gz.repartition(4).write.format('csv').mode("overwrite").save("df_gz_after_splitting")
 
