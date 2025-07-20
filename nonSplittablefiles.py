@@ -79,4 +79,33 @@ if __name__ == '__main__':
     # -rw-r--r--   3 itv020752 supergroup  131866406 2025-07-20 03:46 df_gz_after_splitting/part-00001-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
     # -rw-r--r--   3 itv020752 supergroup  131838827 2025-07-20 03:45 df_gz_after_splitting/part-00002-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
     # -rw-r--r--   3 itv020752 supergroup  131850915 2025-07-20 03:46 df_gz_after_splitting/part-00003-485596b7-27fa-4a21-bb17-119cc56193a5-c000.csv
-    
+
+    df_gz_after_splitting = spark.read.format("csv").load("df_gz_after_splitting")
+    df_gz_after_splitting.show()
+    # +--------+-----------------+
+    # |     _c0|              _c1|
+    # +--------+-----------------+
+    # |26566160|             java|
+    # |20723488|       javascript|
+    # |21338771|             ajax|
+    # | 5049531|              php|
+    # | 1043172|            forms|
+    # |19612915|       javascript|
+    # |20518376|                r|
+    # |13287053|               c#|
+    # |24908837|          jscript|
+    # | 5897148|            video|
+    # | 1302479|               c#|
+    # | 4257074|          dbghelp|
+    # |23599563|               c#|
+    # |25453601|        doctrine2|
+    # |17758349|       navigation|
+    # |23309884|          testing|
+    # |17174950|            linux|
+    # |23610559|            cloud|
+    # |15421303|hibernate-mapping|
+    # |21682771|             html|
+    # +--------+-----------------+
+
+    df_gz_after_splitting.count() # 30438393
+        
